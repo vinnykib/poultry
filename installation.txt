@@ -1,0 +1,22 @@
+1. Copy the folder to root directory of web server 
+
+2. Create a database name "poultry"
+
+3. import the sql file to create tables
+
+Update the datbase records if any want  "dbconfig.php" file
+
+Admin Login Details
+
+user: admin@mail.com
+pass: admin
+
+
+Poultry Farmer : 
+
+user: poultry@mail.com
+pass: poultry
+
+Vet 
+vet@mail.com
+vet12 
