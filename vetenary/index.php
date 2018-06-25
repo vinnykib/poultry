@@ -122,6 +122,11 @@ $users=mysqli_fetch_assoc($sql);
 				include('view_message.php');
 			
 			}
+      if($page=="reply_message")
+      {
+        include('reply_message.php');
+      
+      }
 		  }
 		  else
 		  {

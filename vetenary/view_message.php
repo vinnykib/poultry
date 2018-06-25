@@ -1,85 +1,80 @@
-<?php 
-extract($_POST);
-if(isset($sub))
-{
-$user=$_SESSION['farmer'];
 
-$sql=mysqli_query($conn,"select * from feedback where student_id='$user' and faculty_id='$faculty'");
-$r=mysqli_num_rows($sql);
+<?php
 
-if($r==true)
-{
-echo "<h2 style='color:red'>You already given feedback to this faculty</h2>";
-}
-else
-{
-$query="insert into feedback values('','$user','$faculty','$quest1','$quest2','$quest3','$quest4','$quest5','$quest6','$quest7','$quest8','$quest9','$quest10','$quest11','$quest12','$quest13','$quest14',now())";
+echo '<form method="post">';
+echo '<fieldset>';
+echo '</fieldset>';
 
-mysqli_query($conn,$query);
+echo '<center><h3>Messages from Poultry Farmers</h3></center><br>
+ ';
 
-echo "<h2 style='color:green'>Thank you </h2>";
-}
-}
-
-
-?>
-<form method="post">
-<fieldset>
-<center><h3>Messages from Poultry Farmers</h3></center><br>
  
-<fieldset>
+
+                          $i=1;
+
+                          // $que=mysqli_query($conn,"SELECT 'messages.email', 'messages.question', 'messages.send_at', 'farmer.name','farmer.email'
+                          //                           FROM messages
+                          //                           INNER JOIN farmer ON 'messages.farmer_e' = 'farmer.email' where is_read = 0");
+                           //$que=mysqli_query($conn,"select * from messages where is_read = 0");
+                           $que=mysqli_query($conn,"select * from messages inner join farmer on messages.farmer_e = farmer.email where is_read = 0");
+
+                           if($que==false)
+                            {
+                            echo "<center><h2 style='color:red'>Messages not found</h2></center>";
+                            }
+                            else{
+                          
+                          while($row=mysqli_fetch_array($que))
+                          {
+                            echo '<fieldset>';
+
+                            echo '<div class="container">';
+
+                            echo '<div class="row">';
+                            echo '<section class="content">';
+                            echo '<div class="col-md-10 col-md-offset-0">';
+                            echo '<div class="panel panel-default">';
+                            echo '<div class="panel-body">';
+                            echo '<div class="pull-right">';
+                            echo '<div class="table-container">';
+
+                            echo '<table class="table table-filter">';
+                            echo '<tbody>';
+                            echo '<tr data-status="pendiente">';
+                            echo '<td>';
+                            echo '<div class="media">';
+                            echo '<a href="#" class="pull-left"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo"></a>';
+                            echo '<div class="media-body">';
+                            echo '<span class="media-meta pull-right"><p>'.$row['send_at'].'</p></span>';
+                            echo '<h4 class="title">'.$row['name'].'</h4>';
+                            echo "<p>".$row['question']."</p>";
+                            echo '<a href="index.php?page=reply_message" class="pull-left"><h4>Reply</h4></a>';
+                            echo ' </div>';
+                            echo ' </div>';
+                            echo '</td>';
+                            echo '</tr>';
+                            echo '</tbody>';
+                            echo '</table>';
+
+                            echo ' </div>';
+                            echo ' </div>';
+                            echo ' </div>';
+                            echo ' </div>';
+                            echo ' </div>';
+                            echo ' </div>';
+                            echo ' </div>';
+                            ;
+
+                            echo '</fieldset>';
+                            
+                        
+                            
+                            $i++;
+                          }
+                          }
+                          echo '</form>';
+
+             ?>
 
 
 
-  <div class="container">
-  <div class="row">
-
-    <section class="content">
-      <div class="col-md-10 col-md-offset-0">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="pull-right">
-            <div class="table-container">
-              <table class="table table-filter">
-                <tbody>
-                     
-                  <tr data-status="pendiente">
-                    <td>
-                      <div class="media">
-                        <a href="#" class="pull-left">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
-                        </a>
-                        <div class="media-body">
-                          <span class="media-meta pull-right">Febrero 13, 2016</span>
-                          <h4 class="title">
-                            Lorem Impsum
-                          </h4>
-                          <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-
-
-</fieldset>
-
-
-<!--<a href="transport.html"><p align="right"><button type="Button"style="font-size:7pt;color:white;background-color:green;border:2px solid #336600;padding:7px">Next</button></p></a>
-<a href="About.php"><p align="right"><button type="Button" style="font-size:7pt;color:white;background-color:green;border:2px solid #336600;padding:7px">Back</button></p></a>-->
-
-</div><!--close content_item-->
-      </div><!--close content-->   
-	
-	</div><!--close site_content-->  	
-  
-    
-    </div><!--close main-->
-  </form>
-<center>

@@ -16,7 +16,7 @@ $r=mysqli_num_rows($sql);
 
 if($r==true)
 {
-$_SESSION['vetenary']=$e;
+$_SESSION['vetenary'] = $e;
 header('location:vetenary');
 }
 

@@ -3,7 +3,7 @@
 	if(isset($save))
 	{	
 	
-	mysqli_query($conn,"update vetenary set Name='$n',designation	='$desg', mobile='$mob',	password='$pass' where email='".$_SESSION['vetenary']."'");	
+	mysqli_query($conn,"update vetenary set name='$n',designation	='$desg', mobile='$mob',	password='$pass' where email='".$_SESSION['vetenary']."'");	
 
 $err="<font color='green'>Profile Details updated</font>";
 
@@ -29,7 +29,7 @@ $res=mysqli_fetch_assoc($con);
 	<div class="control-group form-group">
     	<div class="controls">
         	<label>Name:</label>
-            	<input type="text" value="<?php echo @$res['Name'];?>" name="n" class="form-control" required>
+            	<input type="text" value="<?php echo @$res['name'];?>" name="n" class="form-control" required>
         </div>
    	</div>
 	
